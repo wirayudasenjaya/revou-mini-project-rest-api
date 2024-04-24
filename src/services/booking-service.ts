@@ -22,6 +22,7 @@ export class BookingService {
         showtime_id: b.showtime_id,
         showtime: b.showtime,
         seat: b.seat,
+        status: b.status
       });
     });
 

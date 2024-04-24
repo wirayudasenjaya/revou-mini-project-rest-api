@@ -10,7 +10,7 @@ export class UserRepository {
 
   create(userModel: UserModel) {
     return new Promise<number>((resolve, reject) => {
-      const q = `INSERT INTO users(email, password, name) values('${userModel.email}', '${userModel.password}', '${userModel.name}')`;
+      const q = `INSERT INTO users(email, password, name, role) values('${userModel.email}', '${userModel.password}', '${userModel.name}', 'User')`;
       this.db.query(q, (err, rows: mysql2.ResultSetHeader) => {
         if (err) {
           reject(err);

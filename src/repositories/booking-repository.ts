@@ -28,6 +28,7 @@ export class BookingRepository {
             showtime_id: rows[i].showtime_id,
             showtime: rows[i].showtime,
             seat: rows[i].seat,
+            status: rows[i].status
           });
         }
 

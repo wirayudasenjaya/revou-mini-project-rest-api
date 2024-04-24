@@ -6,6 +6,7 @@ export interface BookingModel {
   showtime_id: number;
   showtime: string;
   seat: number;
+  status: string;
 }
 
 export interface getAllBookings {
@@ -16,6 +17,7 @@ export interface getAllBookings {
   showtime_id: number;
   showtime: string;
   seat: number;
+  status: string;
 }
 
 export interface getBookingResponse {
@@ -26,4 +28,5 @@ export interface getBookingResponse {
   showtime_id: number;
   showtime: string;
   seat: number;
+  status: string;
 }
