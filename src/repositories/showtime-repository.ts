@@ -1,5 +1,6 @@
 import mysql2 from "mysql2";
 import { ShowtimeModel } from "../models/showtime-model";
+import { showtimeQueries } from "../queries/showtime-query";
 
 export class ShowtimeRepository {
   private db: mysql2.Connection;
@@ -10,29 +11,35 @@ export class ShowtimeRepository {
 
   addShowtime(showtimeModel: ShowtimeModel): Promise<number> {
     return new Promise<number>((resolve, reject) => {
-      const q = `INSERT INTO showtime(movie_id, showtime) values(${showtimeModel.movie_id}, '${showtimeModel.showtime}')`;
-      this.db.query(q, (err, rows: mysql2.ResultSetHeader) => {
-        if (err) {
-          reject(err);
-          return;
-        }
+      this.db.query(
+        showtimeQueries.add,
+        [showtimeModel.movie_id, showtimeModel.showtime],
+        (err, rows: mysql2.ResultSetHeader) => {
+          if (err) {
+            reject(err);
+            return;
+          }
 
-        resolve(rows.insertId);
-      });
+          resolve(rows.insertId);
+        }
+      );
     });
   }
 
   deleteShowtime(id: number) {
     return new Promise((resolve, reject) => {
-      const q = `DELETE FROM showtime WHERE id = ${id}`;
-      this.db.query(q, (err, rows: mysql2.ResultSetHeader) => {
-        if (err) {
-          reject(err);
-          return;
-        }
+      this.db.query(
+        showtimeQueries.delete,
+        [id],
+        (err, rows: mysql2.ResultSetHeader) => {
+          if (err) {
+            reject(err);
+            return;
+          }
 
-        resolve(rows.affectedRows);
-      });
+          resolve(rows.affectedRows);
+        }
+      );
     });
   }
 }
