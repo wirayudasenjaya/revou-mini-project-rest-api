@@ -101,24 +101,23 @@ export class MovieRepository {
 
   updateMovie(movieModel: MovieModel, id: number): Promise<number> {
     return new Promise<number>((resolve, reject) => {
-      const conditions = [
-        `title = '${movieModel.title}'`,
-        `genre = '${movieModel.genre}'`,
-        `duration = ${movieModel.duration}`,
-        `synopsis = '${movieModel.synopsis}'`,
-        `cast = '${movieModel.cast}'`,
-        `director = '${movieModel.director}'`,
-        `rating = '${movieModel.rating}'`,
-      ];
-
-      const addSQL = `${conditions.join(", ")}`;
+      const updatedData = {
+        title: movieModel.title,
+        genre: movieModel.genre,
+        duration: movieModel.duration,
+        synopsis: movieModel.synopsis,
+        cast: movieModel.cast,
+        director: movieModel.director,
+        rating: movieModel.rating
+      };
 
       this.db.query(
         movieQueries.updateMovie,
-        [addSQL, id],
+        [updatedData, id],
         (err, rows: mysql2.ResultSetHeader) => {
           if (err) {
             reject(err);
+            console.log(err)
             return;
           }
 
