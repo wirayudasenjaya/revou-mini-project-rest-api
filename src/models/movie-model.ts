@@ -7,7 +7,7 @@ export interface MovieModel {
   synopsis: string;
   cast: string;
   director: string;
-  rating: string;
+  rating: number;
 }
 
 export interface GetAllMovies {
@@ -35,7 +35,7 @@ export interface GetMovieDetailResponse {
   synopsis: string;
   cast: string;
   director: string;
-  rating: string;
+  rating: number;
 }
 
 export interface AddMovieRequest {
@@ -45,7 +45,7 @@ export interface AddMovieRequest {
   synopsis: string;
   cast: string;
   director: string;
-  rating: string;
+  rating: number;
 }
 
 export interface AddMovieResponse {
@@ -59,5 +59,5 @@ export interface UpdateMovieRequest {
   synopsis: string;
   cast: string;
   director: string;
-  rating: string;
+  rating: number;
 }

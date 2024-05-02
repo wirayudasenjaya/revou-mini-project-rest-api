@@ -54,7 +54,7 @@ describe("Movies API", () => {
         synopsis: "testing synopsis",
         cast: "testing cast",
         director: "testing director",
-        rating: "1.1"
+        rating: 1.1
       })
 			.set("Authorization", `Bearer ${authToken}`);
     expect(res.status).toBe(200);
@@ -72,7 +72,7 @@ describe("Movies API", () => {
         synopsis: "testing edit synopsis",
         cast: "testing edit cast",
         director: "testing edit director",
-        rating: "1.2"
+        rating: 2.2
       })
 			.set("Authorization", `Bearer ${authToken}`);
     expect(res.status).toBe(200);
